@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ToDoTableViewController.h
 //  Labb3
 //
 //  Created by Tobias Hillén on 2017-01-23.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface ToDoTableViewController : UITableViewController
 
 @end
-
