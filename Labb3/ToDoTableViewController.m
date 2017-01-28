@@ -7,12 +7,27 @@
 //
 
 #import "ToDoTableViewController.h"
+#import "AddViewController.h"
 
 @interface ToDoTableViewController ()
-
+@property (nonatomic) NSMutableArray* activities;
 @end
 
 @implementation ToDoTableViewController
+
+
+-(NSMutableArray*)activities {
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+
+    if(!_activities) {
+        if ([userDefault objectForKey:@"Activities"]) {
+            _activities = [[userDefault objectForKey:@"Activities"] mutableCopy];
+        } else {
+            _activities = [[NSMutableArray alloc]init];
+        }
+    }
+    return _activities;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,27 +44,30 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self.tableView reloadData];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return self.activities.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    cell.textLabel.text = [NSString stringWithFormat:@"%@!",
+                         [self.activities[indexPath.row] objectForKey:@"Activity"]];
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -85,14 +103,14 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    AddViewController *addVC = [segue destinationViewController];
+    addVC.activities = self.activities;
 }
-*/
+
 
 @end

@@ -9,6 +9,11 @@
 #import "AddViewController.h"
 
 @interface AddViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *activityName;
+@property (weak, nonatomic) IBOutlet UISwitch *importantSwitch;
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
+
+@property (nonatomic) BOOL importance;
 
 @end
 
@@ -16,13 +21,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)add:(UIButton *)sender {
+    if (![self.activityName.text isEqualToString:@""]) {
+        NSMutableDictionary* newActivity = [[NSMutableDictionary alloc] init].mutableCopy;
+        [newActivity setObject:self.activityName.text forKey:@"Activity"];
+        [newActivity setObject:[NSNumber numberWithBool:self.importance] forKey:@"Important"];
+        [self.activities addObject:newActivity];
+        
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        [userDefault setObject:self.activities forKey:@"Activities"];
+        [userDefault synchronize];
+    }
+}
+
+- (IBAction)importantTrueOrFalse:(UISwitch *)sender {
+    if ([sender isOn]) {
+        self.importance = YES;
+    } else {
+        self.importance = NO;
+    }
+}
+
 
 /*
 #pragma mark - Navigation
