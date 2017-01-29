@@ -63,17 +63,18 @@
 }
 - (IBAction)save:(UIButton *)sender {
         if (![self.taskName.text isEqualToString:@""]) {
-            //NSLog(@"%@", [self.activities[self.taskId] objectForKey:@"Important"]);
-            [[self.activities[self.taskId]mutableCopy] setValue:self.taskName.text forKey:@"Activity"];
-            [[self.activities[self.taskId]mutableCopy] setObject:[NSNumber numberWithBool:self.important] forKey:@"Important"];
-            [[self.activities[self.taskId]mutableCopy] setObject:[NSNumber numberWithBool:self.done] forKey:@"Done"];
+            NSMutableDictionary* editedTask = [self.activities[self.taskId]mutableCopy];
+            [editedTask setValue:self.taskName.text forKey:@"Activity"];
+            [editedTask setObject:[NSNumber numberWithBool:self.important] forKey:@"Important"];
+            [editedTask setObject:[NSNumber numberWithBool:self.done] forKey:@"Done"];
+            [self.activities removeObjectAtIndex:self.taskId];
+            [self.activities insertObject:editedTask atIndex:self.taskId];
 
-            
-            
             NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
             [userDefault setObject:self.activities forKey:@"Activities"];
             [userDefault synchronize];
             [self.navigationController popViewControllerAnimated:YES];
+            
         }
 }
 
