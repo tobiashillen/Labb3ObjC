@@ -32,17 +32,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.title = @"To-Do";
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -64,10 +58,6 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
     if ([[self.activities[indexPath.row] objectForKey:@"Done"] boolValue]) {
-        /*NSDictionary* attributes = @{ NSStrikethroughStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]};
-        NSAttributedString* attrText = [[NSAttributedString alloc] initWithString:cell.textLabel.text attributes:attributes];
-        cell.textLabel.attributedText = attrText;
-         */
         cell.textLabel.text = [NSString stringWithFormat:@"Klar: %@!",
                                [self.activities[indexPath.row] objectForKey:@"Activity"]];
     } else {
@@ -83,7 +73,6 @@
     
     return cell;
 }
-
 
 /*
 // Override to support conditional editing of the table view.
@@ -122,7 +111,6 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"Add"]){
         AddViewController *addVC = [segue destinationViewController];
@@ -130,16 +118,12 @@
     } else if ([segue.identifier isEqualToString:@"Edit"]) {
         EditViewController *editVC = [segue destinationViewController];
         UITableViewCell *cell = sender;
-        editVC.activities = self.activities;
-        editVC.title = cell.textLabel.text;
-        
         NSIndexPath *index = [self.tableView indexPathForCell:cell];
         int row = (int) index.row;
         editVC.taskId = row;
-
-
+        editVC.activities = self.activities;
+        editVC.title  = [self.activities[row] objectForKey:@"Activity"];
     }
-    
 }
 
 

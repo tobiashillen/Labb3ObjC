@@ -12,11 +12,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *taskName;
 @property (weak, nonatomic) IBOutlet UISwitch *doneSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *importanceSwitch;
-
 @property (nonatomic) NSString* name;
 @property (nonatomic) BOOL done;
 @property (nonatomic) BOOL important;
-
 @end
 
 @implementation EditViewController
@@ -33,7 +31,6 @@
         [self.importanceSwitch setOn:NO animated:YES];
         self.important = NO;
     }
-    NSLog(@"%@", [self.activities[self.taskId] objectForKey:@"Important"]);
     
     // Setting up importance switch and local variable according to data.
     if ([[self.activities[self.taskId] objectForKey:@"Done"] boolValue]) {
@@ -43,21 +40,20 @@
         [self.doneSwitch setOn:NO animated:YES];
         self.done = NO;
     }
-    NSLog(@"%@", [self.activities[self.taskId] objectForKey:@"Done"]);
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
 - (IBAction)importantTrueOrFalse:(UISwitch *)sender {
     if ([sender isOn]) {
         self.important = YES;
     } else if (![sender isOn]){
         self.important = NO;
     }
-
 }
+
 - (IBAction)doneTrueOrFalse:(UISwitch *)sender {
     if ([sender isOn]) {
         self.done = YES;
@@ -89,15 +85,5 @@
             [self.navigationController popViewControllerAnimated:YES];
         }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

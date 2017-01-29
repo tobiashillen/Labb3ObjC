@@ -12,9 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *activityName;
 @property (weak, nonatomic) IBOutlet UISwitch *importantSwitch;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
-
 @property (nonatomic) BOOL importance;
-
 @end
 
 @implementation AddViewController
@@ -52,16 +50,4 @@
         self.importance = NO;
     }
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end
