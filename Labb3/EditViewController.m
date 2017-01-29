@@ -25,19 +25,23 @@
     [super viewDidLoad];
     self.taskName.text = [self.activities[self.taskId] objectForKey:@"Activity"];
     
-    // Setting up importance switch according to data.
+    // Setting up importance switch and local variable according to data.
    if ([[self.activities[self.taskId] objectForKey:@"Important"] boolValue]) {
         [self.importanceSwitch setOn:YES animated:YES];
+       self.important = YES;
     } else {
         [self.importanceSwitch setOn:NO animated:YES];
+        self.important = NO;
     }
     NSLog(@"%@", [self.activities[self.taskId] objectForKey:@"Important"]);
     
-    // Setting up done switch according to data.
+    // Setting up importance switch and local variable according to data.
     if ([[self.activities[self.taskId] objectForKey:@"Done"] boolValue]) {
         [self.doneSwitch setOn:YES animated:YES];
+        self.done = YES;
     } else {
         [self.doneSwitch setOn:NO animated:YES];
+        self.done = NO;
     }
     NSLog(@"%@", [self.activities[self.taskId] objectForKey:@"Done"]);
 }

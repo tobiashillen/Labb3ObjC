@@ -62,9 +62,24 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+
+    if ([[self.activities[indexPath.row] objectForKey:@"Done"] boolValue]) {
+        /*NSDictionary* attributes = @{ NSStrikethroughStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]};
+        NSAttributedString* attrText = [[NSAttributedString alloc] initWithString:cell.textLabel.text attributes:attributes];
+        cell.textLabel.attributedText = attrText;
+         */
+        cell.textLabel.text = [NSString stringWithFormat:@"Klar: %@!",
+                               [self.activities[indexPath.row] objectForKey:@"Activity"]];
+    } else {
+        cell.textLabel.text = [NSString stringWithFormat:@"Att göra: %@!",
+                               [self.activities[indexPath.row] objectForKey:@"Activity"]];
+    }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@!",
-                         [self.activities[indexPath.row] objectForKey:@"Activity"]];
+    if ([[self.activities[indexPath.row] objectForKey:@"Important"] boolValue]) {
+        cell.textLabel.textColor = [UIColor redColor];
+    } else {
+        cell.textLabel.textColor = [UIColor blackColor];
+    }
     
     return cell;
 }
