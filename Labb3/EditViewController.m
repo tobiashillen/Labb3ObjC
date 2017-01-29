@@ -61,6 +61,15 @@
         self.done = NO;
     }
 }
+
+- (IBAction)delete:(UIButton *)sender {
+    [self.activities removeObjectAtIndex:self.taskId];
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setObject:self.activities forKey:@"Activities"];
+    [userDefault synchronize];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (IBAction)save:(UIButton *)sender {
         if (![self.taskName.text isEqualToString:@""]) {
             NSMutableDictionary* editedTask = [self.activities[self.taskId]mutableCopy];
@@ -74,7 +83,6 @@
             [userDefault setObject:self.activities forKey:@"Activities"];
             [userDefault synchronize];
             [self.navigationController popViewControllerAnimated:YES];
-            
         }
 }
 
