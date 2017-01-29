@@ -19,8 +19,11 @@
 
 @implementation AddViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.importantSwitch setOn:NO animated:YES];
+    self.importance = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,11 +35,13 @@
         NSMutableDictionary* newActivity = [[NSMutableDictionary alloc] init].mutableCopy;
         [newActivity setObject:self.activityName.text forKey:@"Activity"];
         [newActivity setObject:[NSNumber numberWithBool:self.importance] forKey:@"Important"];
+        [newActivity setObject:[NSNumber numberWithBool:NO] forKey:@"Done"];
         [self.activities addObject:newActivity];
         
         NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
         [userDefault setObject:self.activities forKey:@"Activities"];
         [userDefault synchronize];
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 

@@ -8,6 +8,7 @@
 
 #import "ToDoTableViewController.h"
 #import "AddViewController.h"
+#import "EditViewController.h"
 
 @interface ToDoTableViewController ()
 @property (nonatomic) NSMutableArray* activities;
@@ -108,8 +109,22 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    AddViewController *addVC = [segue destinationViewController];
-    addVC.activities = self.activities;
+    if ([segue.identifier isEqualToString:@"Add"]){
+        AddViewController *addVC = [segue destinationViewController];
+        addVC.activities = self.activities;
+    } else if ([segue.identifier isEqualToString:@"Edit"]) {
+        EditViewController *editVC = [segue destinationViewController];
+        UITableViewCell *cell = sender;
+        editVC.activities = self.activities;
+        editVC.title = cell.textLabel.text;
+        
+        NSIndexPath *index = [self.tableView indexPathForCell:cell];
+        int row = (int) index.row;
+        editVC.taskId = row;
+
+
+    }
+    
 }
 
 

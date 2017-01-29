@@ -14,6 +14,7 @@
 		8B5FFEEC1E364CB900AE4DB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B5FFEEA1E364CB900AE4DB9 /* LaunchScreen.storyboard */; };
 		8B5FFEF51E364F2400AE4DB9 /* ToDoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5FFEF41E364F2400AE4DB9 /* ToDoTableViewController.m */; };
 		8B5FFEF81E36500700AE4DB9 /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5FFEF71E36500700AE4DB9 /* AddViewController.m */; };
+		8BCCDAF81E3E2D35008A14D9 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCCDAF71E3E2D35008A14D9 /* EditViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		8B5FFEF41E364F2400AE4DB9 /* ToDoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoTableViewController.m; sourceTree = "<group>"; };
 		8B5FFEF61E36500700AE4DB9 /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
 		8B5FFEF71E36500700AE4DB9 /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
+		8BCCDAF61E3E2D35008A14D9 /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
+		8BCCDAF71E3E2D35008A14D9 /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,8 @@
 				8B5FFEF41E364F2400AE4DB9 /* ToDoTableViewController.m */,
 				8B5FFEF61E36500700AE4DB9 /* AddViewController.h */,
 				8B5FFEF71E36500700AE4DB9 /* AddViewController.m */,
+				8BCCDAF61E3E2D35008A14D9 /* EditViewController.h */,
+				8BCCDAF71E3E2D35008A14D9 /* EditViewController.m */,
 			);
 			path = Labb3;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 				8B5FFEE11E364CB900AE4DB9 /* AppDelegate.m in Sources */,
 				8B5FFEF81E36500700AE4DB9 /* AddViewController.m in Sources */,
 				8B5FFEDE1E364CB900AE4DB9 /* main.m in Sources */,
+				8BCCDAF81E3E2D35008A14D9 /* EditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
